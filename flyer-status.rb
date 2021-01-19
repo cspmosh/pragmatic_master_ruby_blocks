@@ -35,3 +35,19 @@ puts flyers.any? { |f| f.status == :platinum }
 
 puts "\nFirst silver flyer"
 puts flyers.detect { |f| f.status == :bronze }
+
+platinum_flyers, coach_flyers = flyers.partition { |f| f.status == :platinum }
+puts "platinum flyers: "
+puts platinum_flyers
+puts "other poor sods: "
+puts coach_flyers
+
+puts flyers.map { |f| "#{f.name} (#{f.status.upcase})"}
+
+puts flyers.map { |f| "#{f.name} kilometers flown: #{f.miles_flown * 1.6}" }
+
+puts "total miles flown: "
+puts flyers.reduce(0) { |total, flyer| total + flyer.miles_flown }
+
+puts "total kilometers flown: "
+puts flyers.map { |f| f.miles_flown * 1.6 }.reduce(0, :+)
